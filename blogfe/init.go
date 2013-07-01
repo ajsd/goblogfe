@@ -7,8 +7,8 @@ import (
 	"appengine"
 	"appengine/user"
 
-	auth "github.com/arunjitsingh/go/auth"
-	blog "github.com/arunjitsingh/goblogae"
+	auth "github.com/ajsd/go/auth"
+	blog "github.com/ajsd/goblogae"
 	jsonrpc "github.com/arunjitsingh/rpc/v2/json2"
 	rpc "github.com/gorilla/rpc/v2"
 )
