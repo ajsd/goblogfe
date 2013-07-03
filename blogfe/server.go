@@ -27,5 +27,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Access-Control-Allow-Origin", corsOrigins)
 	w.Header().Set("Access-Control-Allow-Headers", allowedCORSHeaders)
+	if r.Method == "OPTIONS" {
+		return
+	}
 	s.h.ServeHTTP(w, r)
 }
