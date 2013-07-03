@@ -13,4 +13,7 @@ func init() {
 	s.RegisterCodec(jsonrpc.NewCodec(), "application/json")
 	s.RegisterService(blog.NewAuthenticatedService(NewAuthenticator(), false), "blog")
 	http.Handle("/rpc", NewServer(s))
+
+	http.HandleFunc("/login", Login)
+	http.HandleFunc("/logout", Logout)
 }
