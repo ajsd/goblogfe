@@ -2,6 +2,8 @@ package blogfe
 
 import (
 	"net/http"
+
+	"appengine"
 )
 
 const (
