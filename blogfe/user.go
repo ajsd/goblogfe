@@ -7,10 +7,16 @@ import (
 	"appengine/user"
 )
 
+const nextURLParam = "next"
+
 func Login(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	if url, err := user.LoginURL(c, r.Header.Get("Referer")); err != nil {
-		http.Error(w, "Couldn't log in", http.StatusInternalServerError)
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	if url, err := user.LoginURL(c, r.FormValue(nextURLParam)); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, url, http.StatusFound)
 	}
@@ -18,8 +24,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 func Logout(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	if url, err := user.LogoutURL(c, r.Header.Get("Referer")); err != nil {
-		http.Error(w, "Couldn't log out", http.StatusInternalServerError)
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	if url, err := user.LoginURL(c, r.FormValue(nextURLParam)); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	} else {
 		http.Redirect(w, r, url, http.StatusFound)
 	}
