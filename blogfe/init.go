@@ -14,6 +14,7 @@ func init() {
 	s.RegisterService(blog.NewAuthenticatedService(NewAuthenticator(), false), "blog")
 	http.Handle("/rpc", NewServer(s))
 
-	http.HandleFunc("/login", Login)
-	http.HandleFunc("/logout", Logout)
+	http.HandleFunc(loginURL, Login)
+	http.HandleFunc(logoutURL, Logout)
+	http.HandleFunc(redirectURL, Redirect)
 }
