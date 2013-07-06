@@ -1,5 +1,5 @@
 application: arunjit-goblog
-version: 20130704-2
+version: 20130706-1
 runtime: go
 api_version: go1
 

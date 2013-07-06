@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	allowedCORSOrigins = "ajsd.github.io"
+	allowedCORSOrigins = "http://ajsd.github.io"
 	allowedCORSHeaders = "X-Requested-With,Content-Type"
 	devCORSOrigins     = "*"
 )
