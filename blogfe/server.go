@@ -7,9 +7,10 @@ import (
 )
 
 const (
-	allowedCORSOrigins = "http://ajsd.github.io"
-	allowedCORSHeaders = "X-Requested-With,Content-Type"
-	devCORSOrigins     = "*"
+	allowedCORSOrigins     = "http://ajsd.github.io"
+	allowedCORSHeaders     = "X-Requested-With,Content-Type"
+	allowedCORSCredentials = "true"
+	devCORSOrigins         = "http://localhost:9000"
 )
 
 type Server struct {
@@ -27,6 +28,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Access-Control-Allow-Origin", corsOrigins)
 	w.Header().Set("Access-Control-Allow-Headers", allowedCORSHeaders)
+	w.Header().Set("Access-Control-Allow-Credentials", allowedCORSCredentials)
+
 	if r.Method == "OPTIONS" {
 		return
 	}
